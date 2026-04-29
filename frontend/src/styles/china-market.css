@@ -1,0 +1,88 @@
+/**
+ * 中国A股市场颜色习惯
+ * 红色表示上涨（正收益）
+ * 绿色表示下跌（负收益）
+ * 
+ * 与国际市场相反
+ */
+
+/* ========== 收益率颜色类 ========== */
+
+/* 正收益 - 红色 */
+.return-positive,
+.profit,
+.gain,
+.up,
+.positive-value {
+  color: #ef4444 !important;
+}
+
+/* 负收益 - 绿色 */
+.return-negative,
+.loss,
+.decline,
+.down,
+.negative-value {
+  color: #10b981 !important;
+}
+
+/* ========== Tailwind类名覆盖 ========== */
+
+.text-profit {
+  color: #ef4444 !important;
+}
+
+.text-loss {
+  color: #10b981 !important;
+}
+
+/* ========== 背景色 ========== */
+
+.bg-profit,
+.bg-positive-value {
+  background-color: rgba(239, 68, 68, 0.1) !important;
+}
+
+.bg-loss,
+.bg-negative-value {
+  background-color: rgba(16, 185, 129, 0.1) !important;
+}
+
+/* ========== 边框色 ========== */
+
+.border-profit,
+.border-positive-value {
+  border-color: #ef4444 !important;
+}
+
+.border-loss,
+.border-negative-value {
+  border-color: #10b981 !important;
+}
+
+/* ========== 浅色主题适配 ========== */
+
+:global(.light-theme) .return-positive,
+:global(.light-theme) .profit,
+:global(.light-theme) .positive-value {
+  color: #dc2626 !important;
+}
+
+:global(.light-theme) .return-negative,
+:global(.light-theme) .loss,
+:global(.light-theme) .negative-value {
+  color: #059669 !important;
+}
+
+/* ========== 说明 ========== */
+/*
+ * 使用指南：
+ * 1. 对于收益率、涨跌幅等金融指标，使用 positive-value / negative-value
+ * 2. 对于其他非金融指标（如任务状态、系统状态），不要使用这些类
+ * 3. 回撤、波动率等风险指标，建议使用警告色（橙色/黄色）而非绿色
+ * 
+ * 示例：
+ * <span :class="value >= 0 ? 'positive-value' : 'negative-value'">
+ *   {{ formatPercent(value) }}
+ * </span>
+ */

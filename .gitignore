@@ -1,0 +1,93 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+venv/
+.venv/
+env/
+
+# Node
+node_modules/
+dist/
+frontend/.npm-cache/
+
+# IDE
+.vscode/
+.idea/
+.kiro/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env files
+# .env  # 已允许上传（私有仓库）
+*.local
+
+# Database journals (db files are tracked)
+*.db-journal
+
+# Logs
+*.log
+backend/logs/
+
+# Build
+*.tar.gz
+
+# Windows batch
+*.bat
+
+# Images/Screenshots
+*.png
+*.jpg
+*.bmp
+
+# Temp/generated scripts
+gen_excel.py
+fix_routes.py
+analyze_nav_data*.py
+check_tables.py
+
+# Sample data
+净值数据/
+
+# Test files
+test_code/
+
+# Generated excel/html
+FOF需求清单*.xlsx
+# html (but keep frontend/index.html)
+*.html
+!frontend/index.html
+
+# Old docs (README.md is kept)
+部署指南.md
+开发计划与进度.md
+快速启动指南.md
+用户操作手册.md
+FOF管理平台需求规格说明书.md
+PRD_FOF管理平台V2.md
+需求.txt
+
+# PDFs
+*.pdf
+
+# Old root scripts (not backend/scripts)
+/scripts/
+
+# Backend temp scripts
+backend/check_dates.py
+backend/fix_strategy.py
+backend/init_test_data.py
+backend/requirements-minimal.txt
+
+# Upload data files (keep .gitkeep only)
+backend/uploads/*.xlsx
+backend/uploads/*.xls
+backend/uploads/*.csv
+
+# Lock file (server regenerates)
+frontend/package-lock.json
+# backend/fof.db  # 已允许上传（私有仓库）
+/frontend/public/review-sdk/

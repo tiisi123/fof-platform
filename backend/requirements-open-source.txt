@@ -1,0 +1,32 @@
+# Open-source quant integration stack (pinned for this project version)
+#
+# PyPortfolioOpt
+# GitHub: https://github.com/robertmartin8/PyPortfolioOpt
+# Usage: portfolio optimization (mean-variance, etc.)
+PyPortfolioOpt==1.5.6
+
+# Riskfolio-Lib
+# GitHub: https://github.com/dcajasn/Riskfolio-Lib
+# Usage: risk budget / CVaR / robust optimization
+riskfolio-lib==7.0.1
+
+# quantstats
+# GitHub: https://github.com/ranaroussi/quantstats
+# Usage: performance summary and report generation
+quantstats==0.0.77
+
+# AKShare
+# GitHub: https://github.com/akfamily/akshare
+# Usage: index market data access and CAPM benchmark comparison
+akshare==1.16.96
+
+# OpenBB
+# GitHub: https://github.com/OpenBB-finance/OpenBB
+# Usage: optional multi-source benchmark market data connector
+# NOTE: OpenBB 与项目的 FastAPI 版本冲突，建议跳过安装
+# OpenBB 要求 fastapi>=0.128.0，但项目使用 fastapi==0.104.1
+# 如需使用，请在独立环境中安装或升级项目依赖
+# openbb==4.7.1
+
+# native (built-in fallback engine)
+# Not a GitHub dependency. Used when external dependencies are unavailable.

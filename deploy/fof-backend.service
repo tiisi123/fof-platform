@@ -1,0 +1,32 @@
+[Unit]
+Description=FOF Platform Backend Service
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/web/fof/backend
+Environment="PATH=/root/anaconda3/envs/py310fof/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+ExecStart=/root/anaconda3/envs/py310fof/bin/uvicorn app.main:app --host 0.0.0.0 --port 8506
+
+# 自动重启配置
+Restart=always
+RestartSec=5
+StartLimitInterval=60
+StartLimitBurst=3
+
+# 日志配置
+StandardOutput=append:/root/web/fof/logs/backend.log
+StandardError=append:/root/web/fof/logs/backend-error.log
+
+# 环境变量
+Environment="PYTHONPATH=/root/web/fof/backend"
+Environment="DATABASE_URL=sqlite:///./fof.db"
+Environment="CONDA_DEFAULT_ENV=py310fof"
+
+# 资源限制
+LimitNOFILE=65536
+LimitNPROC=4096
+
+[Install]
+WantedBy=multi-user.target

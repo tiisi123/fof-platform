@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FOF管理平台</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      // 动态配置 API 地址，支持本地和服务器部署
+      const apiEndpoint = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+        ? 'http://localhost:8506/api/v1'
+        : `${window.location.protocol}//${window.location.hostname}:8506/api/v1`;
+
+      window.__REVIEW_SDK_CONFIG__ = {
+        app: 'fof',
+        version: '1.0.0',
+        enabled: true,
+        apiEndpoint: apiEndpoint
+      }
+    </script>
+    <script src="https://rvw.yz314.com:8504/review-sdk/1.0.1/review-sdk.umd.js"></script>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

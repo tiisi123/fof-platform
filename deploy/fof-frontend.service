@@ -1,0 +1,25 @@
+[Unit]
+Description=FOF Platform Frontend Service
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/web/fof/frontend/dist
+ExecStart=/usr/bin/python3 -m http.server 8507
+
+# 自动重启配置
+Restart=always
+RestartSec=5
+StartLimitInterval=60
+StartLimitBurst=3
+
+# 日志配置
+StandardOutput=append:/root/web/fof/logs/frontend.log
+StandardError=append:/root/web/fof/logs/frontend-error.log
+
+# 资源限制
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target

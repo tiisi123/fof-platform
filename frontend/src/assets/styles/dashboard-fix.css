@@ -1,0 +1,118 @@
+/* Dashboard 显示修复 - 确保所有卡片都有正确的背景色 */
+
+/* 统计卡片 */
+.stat-card {
+  background: var(--card-bg) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--card-border) !important;
+}
+
+/* 玻璃态卡片 */
+.glass-card {
+  background: var(--card-bg) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--card-border) !important;
+}
+
+/* 概览统计卡片 */
+.overview-stat-card {
+  background: var(--card-bg) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--card-border) !important;
+}
+
+/* 组合卡片 */
+.portfolio-card {
+  background: var(--hover-bg) !important;
+  border: 1px solid var(--card-border) !important;
+}
+
+/* 跟踪池项目 */
+.pool-item {
+  background: var(--hover-bg) !important;
+  border: 1px solid var(--card-border) !important;
+}
+
+/* 预警统计 */
+.alert-stat {
+  background: var(--hover-bg) !important;
+  border: 1px solid var(--card-border) !important;
+}
+
+/* 预警项目 */
+.alert-item-mini {
+  background: var(--hover-bg) !important;
+}
+
+/* 日历项目 */
+.calendar-item {
+  background: var(--hover-bg) !important;
+  border: 1px solid var(--card-border) !important;
+}
+
+/* 舆情项目 */
+.news-item {
+  background: var(--hover-bg) !important;
+  border: 1px solid var(--card-border) !important;
+}
+
+/* 快速入口卡片 */
+.quick-link-card {
+  background: var(--card-bg) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--card-border) !important;
+}
+
+/* 确保深色主题下的颜色变量正确 */
+:root {
+  --card-bg: rgba(30, 41, 59, 0.8);
+  --card-border: rgba(71, 85, 105, 0.4);
+  --hover-bg: rgba(51, 65, 85, 0.5);
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+}
+
+/* 浅色主题 */
+.light-theme,
+[data-theme="light"] {
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --card-border: rgba(148, 163, 184, 0.3);
+  --hover-bg: rgba(241, 245, 249, 0.8);
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+}
+
+/* 确保数字和文本可见 */
+.stat-value,
+.stat-number {
+  color: var(--text-primary) !important;
+}
+
+.stat-label,
+.stat-title {
+  color: var(--text-secondary) !important;
+}
+
+/* 修复可能的透明度问题 */
+.glass-card,
+.stat-card,
+.overview-stat-card {
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* 确保hover效果可见 */
+.glass-card:hover,
+.stat-card:hover,
+.overview-stat-card:hover {
+  border-color: rgba(59, 130, 246, 0.5) !important;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+}

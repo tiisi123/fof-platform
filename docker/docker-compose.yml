@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  # MySQL数据库
+  mysql:
+    image: mysql:8.0
+    container_name: fof-mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: fof_password_2026
+      MYSQL_DATABASE: fof
+      MYSQL_CHARACTER_SET_SERVER: utf8mb4
+      MYSQL_COLLATION_SERVER: utf8mb4_unicode_ci
+    volumes:
+      - ../data/mysql:/var/lib/mysql
+      - ../database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    networks:
+      - fof-network
+
+  # Redis缓存
+  redis:
+    image: redis:7.0-alpine
+    container_name: fof-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - ../data/redis:/data
+    restart: always
+    networks:
+      - fof-network
+
+  # 后端服务
+  backend:
+    build:
+      context: ../backend
+      dockerfile: ../docker/Dockerfile.backend
+    container_name: fof-backend
+    ports:
+      - "8506:8506"
+    environment:
+      DATABASE_URL: mysql+pymysql://root:fof_password_2026@mysql:3306/fof?charset=utf8mb4
+      REDIS_URL: redis://redis:6379/0
+      DEBUG: "True"
+    volumes:
+      - ../backend:/app
+      - ../data/uploads:/app/uploads
+      - ../data/logs:/app/logs
+    depends_on:
+      - mysql
+      - redis
+    restart: always
+    networks:
+      - fof-network
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8506 --reload
+
+networks:
+  fof-network:
+    driver: bridge
+
+volumes:
+  mysql-data:
+  redis-data:
