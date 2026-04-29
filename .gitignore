@@ -89,5 +89,9 @@ backend/uploads/*.csv
 
 # Lock file (server regenerates)
 frontend/package-lock.json
-# backend/fof.db  # 已允许上传（私有仓库）
+
+# Database files (too large for GitHub, regenerate on server)
+backend/fof.db
+*.db
+
 /frontend/public/review-sdk/
